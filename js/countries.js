@@ -36,6 +36,6 @@ function countryByNames(countries) {
         <p><span style='font-weight:bold;'>Capital:</span> ${country.capital[0]}</p>
         <p><span style='font-weight:bold;'>Car Side:</span> ${country.car.side}</p>
         `;
-        console.log(country);
+
     }
 }
