@@ -1,5 +1,5 @@
 document.getElementById('search-btn').addEventListener('click', () => {
-    document.getElementById('search-result').innerHTML = '';
+    document.getElementById('search-result').textContent = '';
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
@@ -10,12 +10,22 @@ document.getElementById('search-btn').addEventListener('click', () => {
     }
 })
 
-const mealLoad = (name) => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`).then(res => res.json()).then(data => showMeal(data));
+const mealLoad = async name => {
+    try {
+        const res = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+        const data = await res.json()
+
+        showMeal(data);
+    } catch (error) {
+        displayError();
+    }
+
+    // .then(res => res.json())
+    // .then(data => showMeal(data));
 }
 
 
-const showMeal = (data) => {
+const showMeal = data => {
     const searchResult = document.getElementById('search-result');
     if (data.meals != null) {
         for (const meal of data.meals) {
@@ -69,4 +79,8 @@ const showMealDetail = mealId => {
 const mealInstructions = (data) => {
     document.querySelector('.modal-body').innerHTML = data.meals[0].strInstructions;
     document.querySelector('.text-info').innerHTML = data.meals[0].strMeal;
+}
+
+const displayError = () => {
+    document.getElementById('search-result').innerHTML = '<span class="text-danger">Something went wrong, please try again later!</span>';
 }

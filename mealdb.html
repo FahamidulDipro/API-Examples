@@ -11,16 +11,22 @@
 </head>
 
 <body class="bg-dark container">
+
     <h1 class="text-center text-warning mt-3">Search your favourite food</h1>
+    <!-- Meal Search Area -->
     <form class="d-flex mt-5">
-        <input class="form-control me-2 mx-auto" type="search" placeholder="Search Food" aria-label="Search" id="search-field">
+        <input class="form-control me-2 mx-auto" type="search" placeholder="Search Food" aria-label="Search" id="search-field" required>
         <div class="w-50 container">
             <button class="btn btn-outline-success w-50" type="button" id="search-btn">Search</button>
         </div>
 
     </form>
+    <!-- Meal Search Result -->
+    <div class="card-container container mt-3 row" id="search-result">
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="js/mealdb.js"></script>
+    <script src="js/mealdb-async.js"></script>
 
 
 </body>
